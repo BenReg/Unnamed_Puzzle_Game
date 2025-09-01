@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ec18fe81913724cb616cbb6aa278f1, type: 3}
+  m_Name: EchelleModele
+  m_EditorClassIdentifier: 
+  modeleName: 
+  cellsData:
+  - {fileID: 11400000, guid: f92fedd65ca688f488b4aacf60cecf2d, type: 2}
+  - {fileID: 11400000, guid: e790ab83124526d42a1dc6f8a6f9486f, type: 2}
+  - {fileID: 11400000, guid: f92fedd65ca688f488b4aacf60cecf2d, type: 2}
+  - {fileID: 11400000, guid: f92fedd65ca688f488b4aacf60cecf2d, type: 2}
+  - {fileID: 11400000, guid: ea593bbbf93dbf043a02a359ab130d4d, type: 2}
+  - {fileID: 11400000, guid: f92fedd65ca688f488b4aacf60cecf2d, type: 2}
+  - {fileID: 11400000, guid: f92fedd65ca688f488b4aacf60cecf2d, type: 2}
+  - {fileID: 11400000, guid: ea593bbbf93dbf043a02a359ab130d4d, type: 2}
+  - {fileID: 11400000, guid: f92fedd65ca688f488b4aacf60cecf2d, type: 2}
+  rows: 3
+  comumns: 3
