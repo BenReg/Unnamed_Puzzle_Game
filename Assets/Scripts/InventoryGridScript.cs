@@ -2,26 +2,22 @@ using UnityEngine;
 
 public class InventoryGridScript : MonoBehaviour
 {
-
-    private int rows = 1;
+    // Script permettant de générer une barre d'items (pièce du puzzle) en bas que le joueur va drag & drop dans les bonnes cases
     private int columns = 6;
     [SerializeField] GridSO[] inventoryCells;
     [SerializeField] private GameObject inventoryCellPrefab;
 
     public void GenerateInventoryGrid()
     {
-        for (int y = 0; y < rows; y++)
+        for (int x = 0; x < columns; x++)
         {
-            for (int x = 0; x < columns; x++)
-            {
-                GameObject cellObj = Instantiate(inventoryCellPrefab, transform);
-                CellScript cell = cellObj.GetComponent<CellScript>();
+            GameObject cellObj = Instantiate(inventoryCellPrefab, transform);
+            CellScript cell = cellObj.GetComponent<CellScript>();
 
-                int index = y * columns + x;
-                if (index < inventoryCells.Length)
-                {
-                    cell.setCellData(inventoryCells[index]);
-                }
+            int index = x;
+            if (index < inventoryCells.Length)
+            {
+                cell.setCellData(inventoryCells[index]);
             }
         }
     }

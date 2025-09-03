@@ -10,7 +10,7 @@ public class DropSprite : MonoBehaviour, IDropHandler
     private void Awake()
     {
         image = GetComponent<Image>();
-       // cell = GetComponent<CellScript>(); // optionnel
+       // cell = GetComponent<CellScript>();
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -25,7 +25,7 @@ public class DropSprite : MonoBehaviour, IDropHandler
 
             //if (puzzleCell != null)
            // {
-           //     puzzleCell.SetData(dragged.pieceData); // si tu veux garder une trace
+           //     puzzleCell.SetData(dragged.pieceData);
            // }
         }
     }

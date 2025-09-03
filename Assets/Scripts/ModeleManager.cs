@@ -8,9 +8,8 @@ public class ModeleManager : MonoBehaviour
 
     public static event Action<ModeleSO> OnModeleChosen;
      
-    public void LoadModele (int index)
+    public void LoadModele (int index) // Méthode appelée sur le OnClick des boutons (directement dans l'inspecteur)
     {
-        //gridLayout.LoadModele(ListeModeles[index]);
         OnModeleChosen?.Invoke (ListeModeles[index]);
     }
     

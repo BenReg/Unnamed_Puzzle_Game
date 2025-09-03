@@ -3,41 +3,38 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static UnityEditor.Rendering.ShadowCascadeGUI;
 
+// Script permettant de gérer le drag d'un item depuis la barre du bas
+// Quand le joueur drag => un "fantome" est crée qui remplit bien la case côté modèle joueur
 public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private Image image;
-    private RectTransform rectTransform;
-    private Transform originalParent;
+    private Image ghostImage;
     private Canvas canvas;
-    private Vector3 originalScale;
     [SerializeField] private bool isDraggable = true;
     public GridSO cell;
     GameObject dragGhost;
-    
-
-
+    private Color color;
 
     private void Awake()
     {
         if (!isDraggable) return;
         image = GetComponent<Image>();
-        //rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
-        originalScale = transform.localScale;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (!isDraggable) return;
         Debug.Log("OnBeginDrag");
-        /*originalParent = transform.parent;
-        transform.SetParent(canvas.transform);
-        transform.SetAsLastSibling();*/
 
-        dragGhost = new GameObject("DragGhost");
-        dragGhost.AddComponent<Image>().sprite = image.sprite;
+        dragGhost = new GameObject("DragGhost"); // on crée le "fantome" 2 fois plus gros que l'item présenté dans la barre
+        ghostImage = dragGhost.AddComponent<Image>();
+        ghostImage.sprite = image.sprite;
+        color = ghostImage.color;
+        color.a = 0.6f;
+        ghostImage.color = color;
         dragGhost.transform.localScale = new Vector3(2, 2, 1);
-        originalParent = dragGhost.transform.parent;
+        
         dragGhost.transform.SetParent(canvas.transform);
         dragGhost.transform.SetAsLastSibling();
 
@@ -54,27 +51,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         if (!isDraggable) return;
         Debug.Log("OnEndDrag");
-        //transform.SetParent(originalParent);
 
-        Destroy(dragGhost);
+        Destroy(dragGhost); // on détruit le fantome quand le drag s'arrête
     }
-
-
-    /*public void OnPointerEnter(PointerEventData eventData)
-    {
-        if (!isDraggable) return;
-        Debug.Log("OnPointerEnter");
-        //image = GetComponent<Image>();
-        //dragGhost = new GameObject("DragGhost");
-        //dragGhost.AddComponent<Image>().sprite = image.sprite;
-        transform.localScale = originalScale * 2f;
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        if (!isDraggable) return;
-        Debug.Log("OnPointerExit");
-        transform.localScale = originalScale;
-        //Destroy(dragGhost);
-    }*/
 }

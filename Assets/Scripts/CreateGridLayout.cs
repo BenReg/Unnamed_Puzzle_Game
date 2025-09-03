@@ -7,7 +7,6 @@ public class CreateGridLayout : MonoBehaviour
     [SerializeField] private ModeleSO ModeleData;
     [SerializeField] private bool isPlayerGrid = false;
 
-    //[SerializeField] private GridSO[] cellsData;
     private int rows = 3;
     private int columns = 3;
 
@@ -53,10 +52,11 @@ public class CreateGridLayout : MonoBehaviour
             {
                 GameObject cellObj = Instantiate(cellPrefab, transform);
                 var draggable = cellObj.GetComponent<DraggableItem>();
-                /*if (draggable != null)
+                //if (draggable != null)
+                if (!isPlayerGrid)
                 {
-                    draggable.enabled = false; // désactive le script
-                }*/
+                    draggable.enabled = false;
+                }
             }
         }
     }
@@ -64,7 +64,7 @@ public class CreateGridLayout : MonoBehaviour
     public void GenerateModelGrid()
     {
         GridSO[] cellsData = ModeleData.cellsData;
-        Debug.Log("test2");
+        Debug.Log("GenerateModelGrid");
         for (int y = 0; y < rows; y++)
         {
             for (int x = 0; x < columns; x++)
@@ -72,9 +72,10 @@ public class CreateGridLayout : MonoBehaviour
                 GameObject cellObj = Instantiate(cellPrefab, transform);
                 CellScript cell = cellObj.GetComponent<CellScript>();
                 var draggable = cellObj.GetComponent<DraggableItem>();
-                if (draggable != null)
+                //if (draggable != null
+                if (!isPlayerGrid)
                 {
-                    draggable.enabled = false; // désactive le script
+                    draggable.enabled = false;
                 }
 
                 int index = y * columns + x;
